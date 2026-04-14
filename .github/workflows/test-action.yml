@@ -1,0 +1,20 @@
+name: test action
+on: push
+jobs:
+    stuff:
+        runs-on: ubuntu-latest
+        steps:
+            - name: Get Code
+              uses: actions/checkout@v3
+            - name: Install NodeJS
+              uses: actions/setup-node@v3
+              with:
+                node-version: 18
+            - name: Install dependencies
+              run: npm ci
+            - name: lint
+              run: npm run lint
+            - name: test
+              run: npm run test
+            - name: build
+              run: npm run build
